@@ -1,13 +1,12 @@
 <template>
-  <!-- En-tête du quiz -->
-  <Header />
+  <Header v-if="!showResult" />
   <div
+    v-if="!showResult"
     class="container min-vh-100 d-flex align-items-center justify-content-center app-bg"
   >
-    <div class="w-100" style="max-width: 700px; height: 80vh bg-info">
+    <div class="w-100" style="max-width: 700px; height: 80vh">
       <div class="quiz-card">
         <div class="card-body p-4">
-          <!-- Affiche le numéro de la question actuelle -->
           <div class="d-flex align-items-center justify-content-between mb-4">
             <div>
               <p class="text-white fw-bold mb-1">
@@ -18,13 +17,11 @@
               <span>sur {{ questions.length }}</span>
             </div>
           </div>
-          <!-- Affiche le texte de la question -->
           <div class="mb-4">
             <h2 class="fw-bold text-white mb-3" style="font-size: 1.5rem">
               {{ currentQuestion.question }}
             </h2>
           </div>
-          <!-- Boutons des réponses avec indicateurs de correction -->
           <div class="mb-4">
             <div class="d-grid gap-3">
               <button
@@ -55,7 +52,6 @@
               </button>
             </div>
           </div>
-          <!-- Bouton pour passer à la question suivante -->
           <button
             @click="nextQuestion"
             :disabled="selectedAnswer === null"
@@ -68,26 +64,30 @@
       </div>
     </div>
   </div>
+  <Resultat
+    v-else
+    :score="score"
+    :total="questions.length"
+    @play-again="playAgain"
+  />
 </template>
 
 <script setup>
 import Header from "./Header.vue";
+import Resultat from "./Resultat.vue";
 import { ref, computed } from "vue";
 import questions from "./questions.json";
 
-// États réactifs du quiz
 const currentQuestionIndex = ref(0);
 const selectedAnswer = ref(null);
 const score = ref(0);
 const showResult = ref(false);
 
-// Propriétés calculées pour obtenir la question actuelle et vérifier si c'est la dernière
 const currentQuestion = computed(() => questions[currentQuestionIndex.value]);
 const isLastQuestion = computed(
   () => currentQuestionIndex.value === questions.length - 1
 );
 
-// Détermine le style CSS des boutons selon l'état de la réponse
 function getChoiceClass(index) {
   if (selectedAnswer.value === null) {
     return "btn btn-lg btn-dark text-start d-flex align-items-center choice-btn";
@@ -101,12 +101,10 @@ function getChoiceClass(index) {
   return "btn btn-lg btn-secondary text-start d-flex align-items-center choice-btn";
 }
 
-// Enregistre la réponse sélectionnée par l'utilisateur
 function selectAnswer(index) {
   selectedAnswer.value = index;
 }
 
-// Passe à la question suivante ou affiche le résultat
 function nextQuestion() {
   if (selectedAnswer.value === currentQuestion.value.correctAnswer) {
     score.value++;
@@ -117,6 +115,12 @@ function nextQuestion() {
   } else {
     showResult.value = true;
   }
+}
+
+function playAgain() {
+  showResult.value = false;
+  currentQuestionIndex.value = 0;
+  score.value = 0;
 }
 </script>
 
