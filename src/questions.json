@@ -8,5 +8,20 @@
     "question": "Quel joueur a remporté le plus de Ballon d'Or ?",
     "choices": ["Cristiano Ronaldo", "Pelé", "Lionel Messi", "Johan Cruyff"],
     "correctAnswer": 2
+  },
+  {
+    "question": "En quelle année la Coupe du Monde FIFA a-t-elle commencé ?",
+    "choices": ["1930", "1934", "1938", "1950"],
+    "correctAnswer": 0
+  },
+  {
+    "question": "Quel pays a remporté la Coupe du Monde en 2022 ?",
+    "choices": ["France", "Argentine", "Allemagne", "Brésil"],
+    "correctAnswer": 1
+  },
+  {
+    "question": "Quel club joue à Stamford Bridge ?",
+    "choices": ["Arsenal", "Manchester United", "Chelsea", "Tottenham"],
+    "correctAnswer": 2
   }
 ]
