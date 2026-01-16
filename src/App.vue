@@ -73,8 +73,8 @@
 </template>
 
 <script setup>
-import Header from "./Header.vue";
-import Resultat from "./Resultat.vue";
+import Header from "./composants/Header.vue";
+import Resultat from "./composants/Resultat.vue";
 import { ref, computed } from "vue";
 import questions from "./questions.json";
 
