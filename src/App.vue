@@ -125,11 +125,6 @@ function playAgain() {
 </script>
 
 <style scoped>
-body {
-  height: 100vh;
-  overflow: hidden;
-  background: linear-gradient(135deg, #232946 0%, #1a223f 100%);
-}
 .app-bg {
   background: transparent !important;
 }

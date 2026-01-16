@@ -36,8 +36,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from "vue";
-
 // Props reçues du composant parent (score et nombre total de questions)
 
 const props = defineProps({
@@ -52,9 +50,9 @@ const accuracy = Math.round((props.score / props.total) * 100);
 
 const resultTitle =
   props.score === props.total
-    ? "Mission Accomplie"
+    ? "Excellent job"
     : props.score === 0
-    ? "Mission Échouée"
+    ? "Quiz Échoué"
     : props.score > props.total / 2
     ? "Bien Joué !"
     : "Continuez vos efforts !";
@@ -65,7 +63,7 @@ const resultDesc =
   props.score === props.total
     ? "Score parfait ! Vous connaissez vraiment le sujet."
     : props.score === 0
-    ? "Il est temps de retourner à l'école de foot."
+    ? "Il est temps de retourner à l'école de foot." // un peu d'humour
     : props.score > props.total / 2
     ? "Bravo ! Vous avez réussi la plupart des questions."
     : "Vous pouvez mieux faire la prochaine fois !";
@@ -88,10 +86,6 @@ function playAgain() {
   border: 1px solid rgba(255, 255, 255, 0.08);
   min-width: 350px;
   max-width: 400px;
-}
-.result-trophy {
-  font-size: 2.5rem;
-  color: #ffd700;
 }
 .result-score-circle {
   width: 120px;
