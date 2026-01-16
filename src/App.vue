@@ -1,10 +1,15 @@
-<script setup></script>
+<script setup>
+import Header from "./Header.vue";
+</script>
 
 <template>
+  <!-- Intégration du composant Header -->
+  <Header />
   <h1>You did it!</h1>
   <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
+    Visit
+    <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to
+    read the documentation
   </p>
 </template>
 
