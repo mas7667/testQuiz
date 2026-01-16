@@ -1,0 +1,12 @@
+[
+  {
+    "question": "Quel club a remporté le plus de Ligues des Champions ?",
+    "choices": ["FC Barcelone", "AC Milan", "Real Madrid", "Bayern Munich"],
+    "correctAnswer": 2
+  },
+  {
+    "question": "Quel joueur a remporté le plus de Ballon d'Or ?",
+    "choices": ["Cristiano Ronaldo", "Pelé", "Lionel Messi", "Johan Cruyff"],
+    "correctAnswer": 2
+  }
+]
