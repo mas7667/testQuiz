@@ -1,4 +1,5 @@
 <template>
+  <!-- En-tête du quiz -->
   <Header />
   <div
     class="container min-vh-100 d-flex align-items-center justify-content-center app-bg"
@@ -6,9 +7,10 @@
     <div class="w-100" style="max-width: 700px; height: 80vh bg-info">
       <div class="quiz-card">
         <div class="card-body p-4">
+          <!-- Affiche le numéro de la question actuelle -->
           <div class="d-flex align-items-center justify-content-between mb-4">
             <div>
-              <p class="text-black fw-bold mb-1">
+              <p class="text-white fw-bold mb-1">
                 Question {{ currentQuestionIndex + 1 }}
               </p>
             </div>
@@ -16,11 +18,13 @@
               <span>sur {{ questions.length }}</span>
             </div>
           </div>
+          <!-- Affiche le texte de la question -->
           <div class="mb-4">
-            <h2 class="fw-bold text-black mb-3" style="font-size: 1.5rem">
+            <h2 class="fw-bold text-white mb-3" style="font-size: 1.5rem">
               {{ currentQuestion.question }}
             </h2>
           </div>
+          <!-- Boutons des réponses avec indicateurs de correction -->
           <div class="mb-4">
             <div class="d-grid gap-3">
               <button
@@ -51,6 +55,7 @@
               </button>
             </div>
           </div>
+          <!-- Bouton pour passer à la question suivante -->
           <button
             @click="nextQuestion"
             :disabled="selectedAnswer === null"
@@ -70,16 +75,19 @@ import Header from "./Header.vue";
 import { ref, computed } from "vue";
 import questions from "./questions.json";
 
+// États réactifs du quiz
 const currentQuestionIndex = ref(0);
 const selectedAnswer = ref(null);
 const score = ref(0);
 const showResult = ref(false);
 
+// Propriétés calculées pour obtenir la question actuelle et vérifier si c'est la dernière
 const currentQuestion = computed(() => questions[currentQuestionIndex.value]);
 const isLastQuestion = computed(
   () => currentQuestionIndex.value === questions.length - 1
 );
 
+// Détermine le style CSS des boutons selon l'état de la réponse
 function getChoiceClass(index) {
   if (selectedAnswer.value === null) {
     return "btn btn-lg btn-dark text-start d-flex align-items-center choice-btn";
@@ -93,10 +101,12 @@ function getChoiceClass(index) {
   return "btn btn-lg btn-secondary text-start d-flex align-items-center choice-btn";
 }
 
+// Enregistre la réponse sélectionnée par l'utilisateur
 function selectAnswer(index) {
   selectedAnswer.value = index;
 }
 
+// Passe à la question suivante ou affiche le résultat
 function nextQuestion() {
   if (selectedAnswer.value === currentQuestion.value.correctAnswer) {
     score.value++;
@@ -110,4 +120,56 @@ function nextQuestion() {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #232946 0%, #1a223f 100%);
+}
+.app-bg {
+  background: transparent !important;
+}
+.quiz-card {
+  background: rgba(30, 34, 54, 0.98);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.choice-btn {
+  border-radius: 12px !important;
+  font-weight: 500;
+  transition: all 0.2s;
+  box-shadow: none;
+  background: rgba(44, 51, 73, 0.7);
+  color: #fff;
+}
+.btn-success.choice-btn {
+  background: rgba(44, 73, 51, 0.7) !important;
+  color: #b6f7c1 !important;
+  border: 2px solid #2ecc71 !important;
+}
+.btn-danger.choice-btn {
+  background: rgba(73, 44, 51, 0.7) !important;
+  color: #f7b6b6 !important;
+  border: 2px solid #e74c3c !important;
+}
+.btn-secondary.choice-btn {
+  background: rgba(44, 51, 73, 0.3) !important;
+  color: #aaa !important;
+  border: 2px solid #232946 !important;
+}
+.btn-dark.choice-btn {
+  background: rgba(44, 51, 73, 0.7) !important;
+  color: #fff !important;
+  border: 2px solid #232946 !important;
+}
+.next-btn {
+  border-radius: 10px;
+  font-weight: 600;
+  color: #232946;
+  box-shadow: 0 2px 8px rgba(44, 51, 73, 0.08);
+}
+.progress-bar.bg-gradient {
+  background: linear-gradient(90deg, #a78bfa 0%, #6366f1 100%);
+}
+</style>
