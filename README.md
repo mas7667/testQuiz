@@ -1,38 +1,28 @@
-# test1
+# Quiz Soccer
 
-Ce modèle devrait vous aider à commencer le développement avec Vue 3 dans Vite.
+Quiz Vue sur le football européen avec correction immédiate et synthèse du résultat.
 
-## Configuration recommandée de l'IDE
+## Fonctionnalités
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (et désactivez Vetur).
+- Questions et choix chargés depuis un fichier JSON
+- Réponse correcte et réponse sélectionnée mises en évidence
+- Navigation séquentielle et score final
+- Calcul de la précision et possibilité de rejouer
+- Interface responsive basée sur Bootstrap
 
-## Configuration recommandée du navigateur
+## Stack vérifiée
 
-- Navigateurs basés sur Chromium (Chrome, Edge, Brave, etc.) :
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Activez le formateur d'objets personnalisé dans Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox :
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Activez le formateur d'objets personnalisé dans Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- Vue 3.5
+- Vite 7.3
+- Bootstrap 5.3
+- JavaScript
 
-## Personnaliser la configuration
+## Développement
 
-Voir [Référence de configuration Vite](https://vite.dev/config/).
-
-## Configuration du projet
-
-```sh
-npm install
-```
-
-### Compiler et rechargement à chaud pour le développement
-
-```sh
+```bash
+npm ci
+npm run build
 npm run dev
 ```
 
-### Compiler et minifier pour la production
-
-```sh
-npm run build
-```
+Le dépôt compile sans vulnérabilité npm connue au niveau d’audit configuré.
