@@ -17,6 +17,9 @@
               <span>sur {{ questions.length }}</span>
             </div>
           </div>
+          <div class="progress mb-4" style="height: 6px" role="progressbar" :aria-valuenow="currentQuestionIndex + 1" aria-valuemin="1" :aria-valuemax="questions.length">
+            <div class="progress-bar bg-gradient" :style="{ width: ((currentQuestionIndex + 1) / questions.length * 100) + '%' }"></div>
+          </div>
           <div class="mb-4">
             <h2 class="fw-bold text-white mb-3" style="font-size: 1.5rem">
               {{ currentQuestion.question }}
@@ -28,6 +31,8 @@
                 v-for="(choice, index) in currentQuestion.choices"
                 :key="index"
                 @click="selectAnswer(index)"
+                :aria-pressed="selectedAnswer === index"
+                :disabled="selectedAnswer !== null"
                 :class="getChoiceClass(index)"
                 style="font-size: 1.1rem"
               >
